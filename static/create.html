@@ -1,0 +1,270 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>题集合-创建</title>
+    <meta property="wb:webmaster" content="fcfce15bdd9b4f29" />
+    <meta name="description" content="overview & stats" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="shortcut icon" href="img/logo/favicon.jpg">
+
+    <!-- basic styles -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-responsive.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="css/ace/ace.min.css" />
+    <link rel="stylesheet" href="css/ace/ace-responsive.min.css" />
+    <link rel="stylesheet" href="css/ace/ace-skins.min.css" />
+    <!--[if lt IE 9]>
+      <link rel="stylesheet" href="css/ace/ace-ie.min.css" />
+    <![endif]-->
+</head>
+
+<body>
+    <div class="container-fluid" id="main-container">
+        <a href="#" id="menu-toggler"><span></span></a>
+
+        <div id="sidebar" class="fixed">
+            <div id="sidebar-shortcuts">
+                <div id="sidebar-shortcuts-large">
+                    <img src="{{ static_url("img/logo/logo.jpg") }}">
+                </div>
+                <div id="sidebar-shortcuts-mini">
+                    <img src="{{ static_url("img/logo/logo.min.jpg") }}">
+                </div>
+            </div><!-- #sidebar-shortcuts -->
+            <ul class="nav nav-list">
+                <!-- index -->
+                <li>
+                    <a href="/index">
+                        <i class="icon-home"></i>
+                        <span>首页</span>
+                    </a>
+                </li>
+                <!-- home -->       
+                <li>
+                    <a href="/">
+                        <i class="icon-user"></i>                
+                        <span>
+                            我的主页
+                            <i class="icon-bell red icon-animated-bell icon-only"></i>
+                        </span>   
+                    </a>
+                </li>
+                <!-- paper create -->
+                <li class="active">
+                    <a href="/paper/create">
+                        <i class="icon-file"></i>
+                        <span>创建试卷</span>
+                    </a>
+                </li>
+                <!-- blog create -->
+                <li>
+                    <a href="/blog/create">
+                        <i class="icon-file-alt"></i>
+                        <span>分享经验</span>
+                    </a>
+                </li>
+                <!-- search -->
+                <li>
+                    <a href="/search">
+                        <i class="icon-search"></i>
+                        <span>搜索</span>
+                    </a>
+                </li>
+            </ul>
+            <div id="sidebar-collapse"><i class="icon-double-angle-left"></i></div>
+        </div><!--/#sidebar-->
+
+        <div id="main-content" class="clearfix">
+            <div id="page-content" class="clearfix">
+                <div class="row-fluid">
+                    <div class="span6 text-center">
+                        <form method="post">
+                            <div class="visible-desktop">
+                                <input type="text" class="span2" name="year" placeholder="年份">
+                                <select class="span2" id="code" name="code">
+                                    <option value="">省市区</option>
+                                    <option value="1">北京</option>
+                                    <option value="2">上海</option>
+                                    <option value="3">黑龙江</option>
+                                    <option value="4">吉林</option>
+                                    <option value="5">辽宁</option>
+                                    <option value="6">天津</option>
+                                    <option value="7">安徽</option>
+                                    <option value="8">江苏</option>
+                                    <option value="9">浙江</option>
+                                    <option value="10">陕西</option>
+                                    <option value="11">湖北</option>
+                                    <option value="12">广东</option>
+                                    <option value="13">湖南</option>
+                                    <option value="14">甘肃</option>
+                                    <option value="15">四川</option>
+                                    <option value="16">山东</option>
+                                    <option value="17">福建</option>
+                                    <option value="18">河南</option>
+                                    <option value="19">重庆</option>
+                                    <option value="20">云南</option>
+                                    <option value="21">河北</option>
+                                    <option value="22">江西</option>
+                                    <option value="23">山西</option>
+                                    <option value="24">贵州</option>
+                                    <option value="25">广西</option>
+                                    <option value="26">内蒙古</option>
+                                    <option value="27">宁夏</option>
+                                    <option value="28">青海</option>
+                                    <option value="29">新疆</option>
+                                    <option value="30">海南</option>
+                                    <option value="31">西藏</option>
+                                    <option value="32">香港</option>
+                                    <option value="33">澳门</option>
+                                    <option value="34">台湾</option>    
+                                </select>            
+                                <select class="span3" id="university_id" name="university_id"></select> 
+                                <select class="span3" id="college_id" name="college_id"></select>
+                                <input type="text" class="span3" name="major_name" placeholder="专业">
+                                <input type="text" class="span5" name="course" placeholder="专业课">
+                                <select class="span2" name="type">
+                                    <option value="初试">初试</option>
+                                    <option value="复试">复试</option>
+                                </select>
+                            </div>
+                            <div class="visible-desktop">
+                                <div class="btn-group">
+                                    <a id="h1" class="btn btn-minier btn-primary" title='标题一'><strong>H1</strong></a>
+                                    <a id="h2" class="btn btn-minier btn-primary" title='标题二'><strong>H2</strong></a>
+                                    <a id="h3" class="btn btn-minier btn-primary" title='标题三'><strong>H3</strong></a>
+                                </div>
+                                <div class="btn-group">
+                                    <a id="bold" class="btn btn-minier btn-primary" title='粗体'><i class="icon-bold"></i></a>
+                                    <a id="italic" class="btn btn-minier btn-primary" title='斜体'><i class="icon-italic"></i></a>
+                                    <a id="link" class="btn btn-minier btn-primary" title='链接'><i class="icon-link"></i></a>
+                                    <a id='pic' class="btn btn-minier btn-primary" title='图片'><i class='icon-picture'></i></a>
+                                    <a id="list" class="btn btn-minier btn-primary" title='列表'><i class="icon-list"></i></a>
+                                </div>
+                                <div class="btn-group">
+                                    <a id="c1" class="btn btn-minier btn-primary" title='引用一'><strong>C1</strong></a>
+                                    <a id="c2" class="btn btn-minier btn-primary" title='引用二'><strong>C2</strong></a>
+                                    <a id="c3" class="btn btn-minier btn-primary" title='引用三'><strong>C3</strong></a>
+                                </div>
+                            </div>
+                            <textarea id="body" name="body" class="span12" placeholder="支持Markdown语法" style="height:450px"></textarea>
+                            <button class="btn btn-small btn-primary" type="submit">
+                                <i class="icon-save"></i>
+                                保存
+                            </button>                        
+                        </form>
+                    </div>
+                    <div class='span6'>
+                        <div class="tabbable">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#tab1" data-toggle="tab">
+                                        <i class="icon-eye-open"></i>实时预览
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#tab2" data-toggle="tab">
+                                        <i class="icon-info-sign"></i>编辑帮助
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab1">
+                                    <div id="preview"></div>
+                                </div>
+                                <div class="tab-pane" id="tab2">
+                                    {% include "markdown_help.html" %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+            </div>
+        </div>
+    </div>      
+    
+<!-- Le Javascript -->
+<script type='text/javascript' src="js/jquery.js"></script>
+<script type='text/javascript' src="js/bootstrap.min.js"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="js/excanvas.min.js"></script>
+<![endif]-->
+<!-- Le ace Scripts -->
+<script src="js/ace/ace-elements.min.js"></script>
+<script src="js/ace/ace.min.js"></script>
+<!-- Le Javascript for Remote Chained Select -->
+<script src="js/jquery.1.6.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script type='text/javascript' src="js/jquery.chained.remote.min.js"></script>
+<script type='text/javascript'>
+    $("#university_id").remoteChained("#code", "/select/university");
+    $("#college_id").remoteChained("#university_id", "/select/college");
+</script>
+<!-- Le Javascript for Toolbar of Editor -->
+<script type='text/javascript' src="js/editor/jquery.textarea.caret.js"></script>
+<script type='text/javascript'>
+$('#h1').click( function() {
+    $('#body').insertAtCursor('# ');
+});
+$('#h2').click( function() {
+    $('#body').insertAtCursor('## '); 
+});
+$('#h3').click( function() {
+    $('#body').insertAtCursor('### '); 
+});
+$('#bold').click( function() {
+    $('#body').insertAroundCursor('**','**'); 
+});
+$('#italic').click( function() {
+    $('#body').insertAroundCursor('*','*'); 
+});
+$('#link').click( function() {
+    $('#body').insertAroundCursor('[','](http://)'); 
+});
+$('#list').click( function() {
+    $('#body').insertAtCursor('1. ');
+});     
+$('#pic').click( function() {
+    $('#body').insertAroundCursor('![','](http://)');
+});
+$('#c1').click( function() {
+    $('#body').insertAtCursor('> ');
+});
+$('#c2').click( function() {
+    $('#body').insertAtCursor('>> '); 
+});
+$('#c3').click( function() {
+    $('#body').insertAtCursor('>>> '); 
+});
+</script>
+<!-- Le Javascript for ShowDown -->
+<script type='text/javascript' src="js/editor/showdown.js"></script>
+<script type='text/javascript'>
+    var converter = new Showdown.converter();
+    var convert = function() {
+        $('#preview').html(converter.makeHtml($('#body').val()));
+    };
+    convert();
+    $('#body').keyup(convert);
+</script>
+<!-- Le Javascript for preview-scroll -->
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type='text/javascript' src="js/jquery.slimscroll.min.js"></script>
+<script type='text/javascript'>
+    $('#preview').slimScroll({
+        height: '500px',
+    }); 
+    var scroll = function() {
+        $('#preview').slimScroll({
+            scrollTo: '999999px',
+        });    
+    };
+    $('#body').keyup(scroll);
+    $('#example').slimScroll({
+        height: '500px',
+    });    
+</script>
+</body>
