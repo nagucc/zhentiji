@@ -239,6 +239,9 @@ $('#c2').click( function() {
 $('#c3').click( function() {
     $('#body').insertAtCursor('>>> '); 
 });
+
+
+
 </script>
 <!-- Le Javascript for ShowDown -->
 <script type='text/javascript' src="js/editor/showdown.js"></script>
@@ -267,4 +270,32 @@ $('#c3').click( function() {
         height: '500px',
     });    
 </script>
+
+    <script src="/Content/js/js-helper.js" type="text/javascript"></script>
+    <script src="/Content/js/jquery-helper.js" type="text/javascript"></script>
+    <script src="/Content/js/bootstrap-helper.js" type="text/javascript"></script>
+    <script src="/Content/js/nagu-helper.js" type="text/javascript"></script>
+    <script src="/Content/js/apps-helper.js" type="text/javascript"></script>
+    <script src="/Content/js/bootstarp-dropdownmenu.js" type="text/javascript"></script>
+    <script src="/Content/js/nagu-bs-accordion.js" type="text/javascript"></script>
+    
+    <script type="text/javascript">
+        $(function () {
+            $('#code').empty();
+            // lcalhost:
+            //var bagId = '3526eba0-79de-4298-88df-e0a28e3a9828';
+
+            //nagu.cc:
+            var bagId = 'ee9a16d9-6ba9-46ab-bfd1-6510da1caecf'
+            Nagu.SM.findBySP(bagId, Nagu.MType.Concept,
+                Nagu.Rdf.Li).done(function (fss) {
+                    $.each(fss, function (i, fs) {
+                        var option = B.option().val(fs.Object.ConceptId).text('loading...').appendTo(code);
+                        Nagu.CM.get(fs.Object.ConceptId).done(function (c) {
+                            option.text(c.FriendlyNames[0]);
+                        });
+                    });
+                });
+        });
+    </script>
 </body>
